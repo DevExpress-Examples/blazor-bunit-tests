@@ -1,0 +1,41 @@
+﻿@using DxTestProject.Data
+@inject WeatherForecastService ForecastService
+
+<DxTreeView AllowSelectNodes="true"
+            SelectionChanged="TreeView_SelectionChanged">
+    <Nodes>
+        <DxTreeViewNode Text="Filter by date" />
+        <DxTreeViewNode Text="Filter by temperature" />
+        <DxTreeViewNode Text="Filter by precipitation" />
+    </Nodes>
+</DxTreeView>
+
+<DxGrid Data="@forecasts" @ref="MyGrid">
+    <Columns>
+        <DxGridDataColumn FieldName="Date" />
+        <DxGridDataColumn FieldName="TemperatureC" Caption="Temperature" />
+        <DxGridDataColumn FieldName="Precipitation" />
+    </Columns>
+</DxGrid>
+
+@code {
+    IGrid MyGrid { get; set; }
+
+    private WeatherForecast[] forecasts;
+
+    void TreeView_SelectionChanged(TreeViewNodeEventArgs e) {
+        MyGrid.SetFilterCriteria(null);
+        switch(e.NodeInfo.Text) {
+            case "Filter by date":
+                MyGrid.FilterBy("Date", GridFilterRowOperatorType.Equal, new DateTime(2020, 05, 14)); break; // the Grid displays 1 row
+            case "Filter by temperature":
+                MyGrid.FilterBy("TemperatureC", GridFilterRowOperatorType.Greater, 20); break; // the Grid displays 3 rows
+            case "Filter by precipitation":
+                MyGrid.FilterBy("Precipitation", GridFilterRowOperatorType.Less, 2); break; // the Grid displays 6 rows
+        }
+    }
+
+    protected override void OnInitialized() {
+        forecasts = ForecastService.GetForecastAsync();
+    }
+}
