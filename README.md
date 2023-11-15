@@ -4,7 +4,7 @@
 <!-- default badges end -->
 # Blazor - Test components with bUnit
 
-This example demonstrates how you can add unit testing to your Blazor application with DevExpress components and contains the latest mock implementation for internal DevExpress dependencies. The testing framework is [bUnit](https://bunit.dev/).
+This example demonstrates how you can add unit testing to a Blazor application that contains DevExpress components. The project contains the latest mock implementation for internal DevExpress dependencies. The testing framework is [bUnit](https://bunit.dev/).
 
 ![DevExpress Blazor Components with bUnit](/blazor-bunit.png)
 
