@@ -5,25 +5,26 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Bunit;
-using Bunit.Extensions.WaitForHelpers;
 using DevExpress.Blazor.bUnit.Internal;
 using DevExpress.Blazor.Internal;
 using DxTestProject.Data;
-using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Bunit.Extensions.WaitForHelpers;
 
-namespace DevExpressBunit.Test
-{
+namespace DevExpressBunit.Test {
     public static class BUnitTestContextExtensions {
         public static void AddDevExpressBlazorTesting(this TestContext testContext) {
+            testContext.Services.AddSingleton<WeatherForecastService>();
+            testContext.Services.TryAddScoped<ScriptsProvider, ScriptsProvider>();
+            testContext.Services.TryAddScoped<LicenseRenderer, LicenseRenderer>();
             testContext.Services.TryAddScoped<IEnvironmentInfoFactory, MockEnvironmentInfoFactory>();
             testContext.Services.TryAddScoped<IEnvironmentInfo, MockEnvironmentInfo>();
             testContext.Services.TryAddScoped<ISvgImagesLoader, FakeSvgImagesLoader>();
             testContext.Services.TryAddScoped<IGlobalOptionsService, GlobalOptionsService>();
-            testContext.Services.AddSingleton<WeatherForecastService>();
             testContext.Services.AddOptions();
             testContext.Services.AddLogging();
             testContext.Services.TryAddComponentRequiredServices();
@@ -42,7 +43,9 @@ namespace DevExpressBunit.Test
             rootModule.Setup<DeviceInfo>("getDeviceInfo", _ => true).SetResult(new DeviceInfo(false));
         }
 
+
         sealed class FakeSvgImagesLoader : ISvgImagesLoader {
+            bool ISvgImagesLoader.RequirePreprocessing => false;
             static readonly RenderFragment _emptyRenderFragment = b => { };
             RenderFragment ISvgImagesLoader.GetLoaderRenderFragment(string spriteUrl, out bool useShortName) {
                 useShortName = false;
@@ -118,6 +121,7 @@ namespace DevExpressBunit.Test
             public Task InitializeRuntime() {
                 return Task.CompletedTask;
             }
+
         }
     }
 }
