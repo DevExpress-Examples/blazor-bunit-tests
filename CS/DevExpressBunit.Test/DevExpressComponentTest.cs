@@ -21,6 +21,7 @@ namespace DevExpressBunit.Test {
             testContext.Services.AddSingleton<WeatherForecastService>();
             testContext.Services.TryAddScoped<ScriptsProvider, ScriptsProvider>();
             testContext.Services.TryAddScoped<LicenseRenderer, LicenseRenderer>();
+            testContext.Services.TryAddScoped<IDropDownSettingsProvider, DropDownSettingsProvider>();
             testContext.Services.TryAddScoped<IEnvironmentInfoFactory, MockEnvironmentInfoFactory>();
             testContext.Services.TryAddScoped<IEnvironmentInfo, MockEnvironmentInfo>();
             testContext.Services.TryAddScoped<ISvgImagesLoader, FakeSvgImagesLoader>();
@@ -121,7 +122,6 @@ namespace DevExpressBunit.Test {
             public Task InitializeRuntime() {
                 return Task.CompletedTask;
             }
-
         }
     }
 }
