@@ -22,7 +22,7 @@ Refer to the following help article for more information on testing: [Test compo
 
 - [Test components with bUnit](https://docs.devexpress.com/Blazor/404603/common-concepts/test-components-with-bunit)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=blazor-bunit-tests&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=blazor-bunit-tests&~~~was_helpful=no)
 
