@@ -17,7 +17,7 @@ using Bunit.Extensions.WaitForHelpers;
 
 namespace DevExpressBunit.Test {
     public static class BUnitTestContextExtensions {
-        public static void AddDevExpressBlazorTesting(this TestContext testContext) {
+        public static void AddDevExpressBlazorTesting(this BunitContext testContext) {
             testContext.Services.AddSingleton<WeatherForecastService>();
             testContext.Services.TryAddScoped<ScriptsProvider, ScriptsProvider>();
             testContext.Services.TryAddScoped<LicenseRenderer, LicenseRenderer>();
@@ -30,11 +30,6 @@ namespace DevExpressBunit.Test {
             testContext.Services.AddLogging();
             testContext.Services.TryAddComponentRequiredServices();
             testContext.JSInterop.ConfigureJSInterop();
-        }
-
-        public static async Task WaitForAssertionAsync(this IRenderedFragmentBase renderedFragment, Action assertion, TimeSpan? timeout = null) {
-            using var waiter = new WaitForAssertionHelper(renderedFragment, assertion, timeout);
-            await waiter.WaitTask;
         }
 
         static void ConfigureJSInterop(this BunitJSInterop interop) {

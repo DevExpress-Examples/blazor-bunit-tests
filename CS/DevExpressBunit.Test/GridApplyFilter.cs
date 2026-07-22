@@ -7,15 +7,15 @@ using DevExpress.Blazor;
 
 namespace DevExpressBunit.Test {
     public class GridApplyFilter : IDisposable {
-        public TestContext Context { get; }
+        public BunitContext Context { get; }
         public GridApplyFilter() {
-            Context = new TestContext();
+            Context = new BunitContext();
             Context.Services.AddOptions();
             Context.AddDevExpressBlazorTesting();
         }
         [Fact]
         public void CheckIfNodeClickAppliesFilter() {
-            var cut = Context.RenderComponent<Grid_ApplyFilter>();
+            var cut = Context.Render<Grid_ApplyFilter>();
             var treeview = cut.FindComponent<DxTreeView>().Instance;
             var grid = cut.FindComponent<DxGrid>().Instance;
             cut.InvokeAsync(() => treeview.SelectNode(x => x.Text == "Filter by date"));
