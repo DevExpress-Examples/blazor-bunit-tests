@@ -12,7 +12,7 @@ This example adds unit testing to a Blazor application that contains DevExpress 
 
 Refer to the following help article for more information on testing: [Test components with bUnit](https://docs.devexpress.com/Blazor/404603/common-concepts/test-components-with-bunit).
 
-## Upgrade to 26.2+
+## Upgrade to v26.2+
 
 With v26.2, we significantly simplified bUnit setup. If you upgrade from v26.1 (or earlier), do the following:
 
