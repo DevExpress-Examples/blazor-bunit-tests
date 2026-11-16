@@ -4,13 +4,28 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-# Blazor - Test components with bUnit
+# Blazor - Test Components with bUnit
 
-This example demonstrates how you can add unit testing to a Blazor application that contains DevExpress components. The project contains the latest mock implementation for internal DevExpress dependencies. The testing framework is [bUnit](https://bunit.dev/).
+This example adds unit testing to a Blazor application that contains DevExpress components. You can find the latest mock implementation for DevExpress dependencies in the _DevExpressBunit.Test_ project. The testing framework is [bUnit](https://bunit.dev/).
 
 ![DevExpress Blazor Components with bUnit](/blazor-bunit.png)
 
 Refer to the following help article for more information on testing: [Test components with bUnit](https://docs.devexpress.com/Blazor/404603/common-concepts/test-components-with-bunit).
+
+## Upgrade to 26.2+
+
+With v26.2, we significantly simplified bUnit setup. If you upgrade from v26.1 (or earlier), do the following:
+
+* Remove the `DevExpress.Internal` namespace reference as it is no longer needed.
+* You can replace the mock class implementation with the following code lines:
+
+    ```csharp
+    testContext.Services.AddSingleton<WeatherForecastService>();
+    testContext.Services.AddDevExpressBlazor();
+    testContext.JSInterop.Mode = JSRuntimeMode.Loose;
+    ```
+
+Review the latest commit in the current branch for more implementation details.
 
 ## Files to Review
 
