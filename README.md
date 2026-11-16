@@ -17,7 +17,7 @@ Refer to the following help article for additional information on testing: [Test
 With v26.2, we significantly simplified bUnit setup. If you upgrade from v26.1 (or earlier), do the following:
 
 * Remove the `DevExpress.Internal` namespace reference as it is no longer needed.
-* You can replace the mock class implementation with the following code lines:
+* Replace the mock class implementation with the following code lines:
 
     ```csharp
     testContext.Services.AddSingleton<WeatherForecastService>();
