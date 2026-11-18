@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-# Blazor - Test Components with bUnit
+# Blazor - Test DevExpress Components with bUnit
 
 This example adds unit testing to a Blazor application that contains DevExpress components. You can find the latest mock implementation for DevExpress dependencies in the _DevExpressBunit.Test_ project. The testing framework is [bUnit](https://bunit.dev/).
 
@@ -14,7 +14,7 @@ Refer to the following help article for additional information on testing: [Test
 
 ## Upgrade to v26.2+
 
-With v26.2, we significantly simplified bUnit setup. If you upgrade from v26.1 (or earlier), do the following:
+We simplified bUnit setup in v26.2. If you upgrade from v26.1 or earlier, do the following:
 
 * Remove the `DevExpress.Internal` namespace reference as it is no longer needed.
 * Replace the mock class implementation with the following code lines:
