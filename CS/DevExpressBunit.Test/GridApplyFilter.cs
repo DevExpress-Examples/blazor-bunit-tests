@@ -9,7 +9,6 @@ using DevExpress.Blazor;
 namespace DevExpressBunit.Test {
     public class GridApplyFilter : BunitContext {
         public GridApplyFilter() {
-            Services.AddOptions();
             this.AddDevExpressBlazorTesting();
         }
         [Fact]
